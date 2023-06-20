@@ -6,8 +6,9 @@ import styled from "styled-components";
 const Home = () => {
   const [url, setUrl] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+
 
     const res = await axios.post(
       "http://localhost:5000/api/v1/url/create",
@@ -17,6 +18,18 @@ const Home = () => {
     );
 
     console.log(res);
+    // fetch('http://localhost:5000/api/v1/url/create',{
+    //   method:"POST",
+    //   body:JSON.stringify({
+    //     longUrl : url
+    //   }),
+    //       headers: {
+    //         'Content-type': 'application/json; charset=UTF-8',
+    //      },
+    // })
+    // .then((res)=>res.json())
+    // .then(data=>console.log(data))
+
   };
 
   const handleChange = (e) => {
