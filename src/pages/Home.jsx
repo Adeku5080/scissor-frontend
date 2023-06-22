@@ -5,36 +5,29 @@ import styled from "styled-components";
 
 const Home = () => {
   const [url, setUrl] = useState("");
+  const [newUrl, setNewUrl] = useState("");
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-    const res = await axios.post(
+    const { data } = await axios.post(
       "http://localhost:5000/api/v1/url/create",
-      { longUrl: url },
-     
-
+      { longUrl: url }
     );
 
-    console.log(res);
-    // fetch('http://localhost:5000/api/v1/url/create',{
-    //   method:"POST",
-    //   body:JSON.stringify({
-    //     longUrl : url
-    //   }),
-    //       headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //      },
-    // })
-    // .then((res)=>res.json())
-    // .then(data=>console.log(data))
-
+    setNewUrl(data.newUrl);
   };
+
+  const handleClick=()=>{
+    setUrl("");
+    setNewUrl("");
+  }
 
   const handleChange = (e) => {
     setUrl(e.target.value);
   };
+
+
   return (
     <Container>
       <h1>Create Short Urls,</h1>
@@ -48,11 +41,16 @@ const Home = () => {
           <button type="submit">submit </button>
         </form>
       </FormContainer>
+
+      <NewUrl>Your New Url : {newUrl}</NewUrl>
+
+      <button onClick={handleClick}>Shorten another </button>
     </Container>
   );
 };
 
 const Container = styled.div``;
 const FormContainer = styled.div``;
+const NewUrl = styled.div``;
 
 export default Home;
