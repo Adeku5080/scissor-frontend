@@ -11,7 +11,7 @@ const Home = () => {
     e.preventDefault();
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/v1/url/create",
+      "http://localhost:8000/api/v1/url/create",
       { longUrl: url }
     );
 
