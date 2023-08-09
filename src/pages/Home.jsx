@@ -10,12 +10,12 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data } = await axios.post(
-      "http://localhost:8000/api/v1/url/create",
-      { longUrl: url }
-    );
+    // const { data } = await axios.post(
+    //   "http://localhost:8000/api/v1/url/create",
+    //   { longUrl: url }
+    // );
 
-    setNewUrl(data.newUrl);
+    // setNewUrl(data.newUrl);
   };
 
   const handleClick=()=>{
